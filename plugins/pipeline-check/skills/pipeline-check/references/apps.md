@@ -14,9 +14,9 @@ Use only the apps the settings switch on. Each section says what to look for and
 
 Events with pipeline contacts in the last 3 days and next 2 days. Many calls are booked by direct invite rather than the booking tool, so always check the calendar too.
 
-## Booking tool (Calendly or similar)
+## Booking tool (Calendly, OnceHub or similar)
 
-Bookings created in the last 3 days and calls in the next 2 days. List invitees to get names, emails and booking-form answers. The settings say which pipeline a booking goes to, often based on a booking-form answer.
+Bookings created in the last 3 days and calls in the next 2 days. List invitees to get names, emails and booking-form answers. The settings say which pipeline a booking goes to, often based on a booking-form answer. Some booking tools' connectors only show upcoming meetings, not when they were booked; then use the calendar and the booking confirmation emails to catch new bookings.
 
 ## Quiz tool (ScoreApp or similar)
 

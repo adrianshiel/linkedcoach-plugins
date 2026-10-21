@@ -20,7 +20,7 @@ You're setting up the daily pipeline check (the `pipeline-check` skill) for this
 Look at the tools available in this chat and list, in one short message, which of these are connected and which aren't:
 
 - **Required:** the Less Annoying CRM connector (`crm_*` tools) and Google Drive.
-- **Lead sources and channels:** email (Gmail or Outlook), calendar, booking tool (Calendly or similar), quiz tool (ScoreApp or similar), email marketing (Kit or similar), meeting notes (Fathom, Wispr Flow, Fireflies, Otter, Google Meet notes by email), LinkedIn inbox (Kondo), payment emails.
+- **Lead sources and channels:** email (Gmail or Outlook), calendar, booking tool (Calendly, OnceHub or similar), quiz tool (ScoreApp or similar), email marketing (Kit or similar), meeting notes (Fathom, Wispr Flow, Fireflies, Otter, Google Meet notes by email), LinkedIn inbox (Kondo), payment emails.
 
 If the CRM connector is missing, stop and say: "Connect the CRM first: Customize, Plugins, Pipeline Check, Connectors, then connect less-annoying-crm with your Less Annoying CRM API key. Then start a new chat and run setup again." If Google Drive is missing, ask them to connect it and start again.
 
