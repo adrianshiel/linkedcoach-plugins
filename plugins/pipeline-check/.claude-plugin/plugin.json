@@ -1,7 +1,7 @@
 {
   "name": "pipeline-check",
   "displayName": "Pipeline Check",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A daily check of your sales pipeline: keeps your CRM up to date from every channel, tells you who to follow up with today, and drafts the replies in your voice. Never sends anything.",
   "author": { "name": "LinkedCoach", "url": "https://linked.coach" }
 }

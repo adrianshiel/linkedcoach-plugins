@@ -26,9 +26,10 @@ A daily check of your sales pipeline, run by Claude on a schedule. Each run:
    ```
 
 2. Open the plugin in **Customize, Plugins**, go to its **Connectors** tab and connect **less-annoying-crm**. On the sign-in page, paste your Less Annoying CRM API key and choose **Allow**.
-3. Create a scheduled task in Claude, at the time you want the check to run each weekday, with this instruction:
+3. Start a new chat and say **"set up my pipeline check"**. Claude reads your CRM and apps, asks you to confirm the details, writes your settings document into your Google Drive, runs a test that changes nothing, and creates the scheduled task.
+4. In the scheduled task's settings, set approvals to automatic. Without that the run stops at its first CRM update.
 
-> Run my daily pipeline check with the pipeline-check skill. My settings are in this Google Doc: [link to your settings document]. Nobody is watching this run, so don't stop to ask; put anything that needs me in the report.
+Every report ends with "Pipeline Check playbook" and a version number. If that line is missing, the check didn't run properly.
 
 ## Your data
 

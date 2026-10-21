@@ -102,12 +102,12 @@ If the settings don't mention locations, skip this.
 
 The CRM connector has three guarded clean-up tools: `crm_delete_test_entry` (a contact whose only emails are +aliases of the user's own address), `crm_merge_duplicate_contacts` (two records sharing an email or LinkedIn profile; copies everything into the kept record first) and `crm_delete_duplicate_pipeline_item` (a second item for the same person in the same pipeline). Each previews unless called again with `confirm: true`.
 
-Once per run, after step 1, run `crm_find_duplicates` with `include_name_matches: false`, then preview the clean-up for each email or LinkedIn match, each test entry and each duplicate pipeline item. At most 10 previews a run; say how many you skipped. Never act on a name-only match.
+Once per run, after step 1, run `crm_find_duplicates` with `include_name_matches: false`. Never act on a name-only match.
 
 The settings say whether clean-up is **preview only** (the default) or **allowed**:
 
-- **Preview only:** never make the confirming call. Nothing is deleted.
-- **Allowed:** confirm a preview only when it's an exact email or LinkedIn match, a +alias test entry, or a second pipeline item that is newer and at an earlier stage than the one kept. Anything else stays a preview.
+- **Preview only:** don't call the three clean-up tools at all. A scheduled run's safety check treats them as deletes and blocks them, so `crm_find_duplicates` is the whole clean-up step. Report what it found: each test entry, each email or LinkedIn match, and each duplicate pipeline item, with which record or item it suggests keeping. Nothing is deleted.
+- **Allowed:** preview the clean-up for each email or LinkedIn match, each test entry and each duplicate pipeline item (at most 10 a run; say how many you skipped). Confirm a preview only when it's an exact email or LinkedIn match, a +alias test entry, or a second pipeline item that is newer and at an earlier stage than the one kept. Anything else stays a preview. If the safety check blocks a clean-up call, don't retry it; list it under "Needs your decision" as not done.
 
 For the rest of the run, put notes, tasks and moves on the record a preview says would be kept. If a preview's choice of record to keep looks wrong (it keeps the record with fewer notes or the earlier stage), say so.
 
@@ -127,9 +127,11 @@ End with a short report: direct, in the user's language from the settings, no pr
 
 - **Today:** the ranked list. For each: name, pipeline and stage, days waiting, the channel of the last contact, what to do, and "email draft ready" or "LinkedIn draft ready" if you drafted one.
 - **Updated in the CRM:** one line per change you made (added, moved, note, task, label).
-- **Needs your decision:** suggested closes, leads outside the accepted locations, unclear cases. End it with "Clean-up previews (nothing deleted)" in preview-only mode, or "Clean-up done" in allowed mode: one line each saying what would be or was removed, what was kept and what was copied across.
+- **Needs your decision:** suggested closes, leads outside the accepted locations, unclear cases. End it with "Clean-up found (nothing deleted)" in preview-only mode, or "Clean-up done" in allowed mode: one line each saying what would be or was removed, what was kept and what was copied across.
 - **Couldn't check:** any source that failed or wasn't available, one line each.
 
 If you wrote drafts, finish with this exact line, and only if it's true: "Drafts written with the voice loaded."
 
 If there's nothing in Today, nothing needs a decision and no clean-up, the whole report is one line saying the pipeline is up to date.
+
+Always end the report with this exact line, on its own, so the user can see which playbook ran: "Pipeline Check playbook 0.2.0"

@@ -49,7 +49,7 @@ Also use `list_inbox` with an "after" time and the views for chats needing the u
 **Protect the user's LinkedIn account.** Some Kondo tools call LinkedIn directly, and too much of that can get the account restricted.
 
 - Read from stored messages with `list_chats` (without `linkedin: true`), `list_inbox` and `read_chat`.
-- Use `load_chat` only as above, and never more than the limit in the settings (5 if not set). If you need more, list the people you couldn't load under "Couldn't check" and don't draft for them on LinkedIn.
+- Use `load_chat` only as above, and never more than the limit in the settings (5 if not set). Decide who gets the fetches before you make the first one, in this order: people waiting on the user's reply (warmest pipeline stage first), then pipeline people with new activity since the CRM's last note, then new people from step 2, and last anyone waiting on the other person's reply. If you need more, list the people you couldn't load under "Couldn't check" and don't draft for them on LinkedIn.
 - Never use `list_connections`, `list_invites`, `set_invite_response`, `set_chat_archived`, or `list_chats` with `linkedin: true`.
 
 **Drafts:** use `set_chat_draft`, only if the chat has no draft already (check the draft inbox). Kondo can't show the text of a saved draft: if a chat is in the draft inbox, don't draft for that person on any channel and say "there's an unsent draft in [name]'s LinkedIn chat that I couldn't read". If the person isn't a 1st-degree connection there's no chat to draft in: say so and suggest a connection request.
