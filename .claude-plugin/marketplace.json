@@ -1,0 +1,15 @@
+{
+  "name": "linkedcoach",
+  "description": "LinkedCoach plugins for Claude",
+  "owner": {
+    "name": "LinkedCoach",
+    "url": "https://linked.coach"
+  },
+  "plugins": [
+    {
+      "name": "pipeline-check",
+      "source": "./plugins/pipeline-check",
+      "description": "A daily check of your sales pipeline: keeps your CRM up to date from every channel, tells you who to follow up with today, and drafts the replies in your voice. Never sends anything."
+    }
+  ]
+}

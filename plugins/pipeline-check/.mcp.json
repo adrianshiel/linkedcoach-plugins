@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "less-annoying-crm": {
+      "type": "http",
+      "url": "https://crm.linked.coach/mcp"
+    }
+  }
+}
