@@ -30,7 +30,9 @@ Results from the quizzes the settings list, and only those. Most accounts also h
 
 ## Meeting notes (Wispr Flow, Fathom, Otter, Fireflies or similar)
 
-Search by attendee email or name. Read the notes, and the transcript if the notes are thin. A meeting that happened is evidence for a stage move if the settings have a rule for it.
+Search by attendee email or name. A meeting that happened is evidence for a stage move if the settings have a rule for it.
+
+The summary notes are written by the notetaker's AI and can be wrong: a price, a date or who agreed to what can come out differently from what was said. Use the summary to find your way around the call, but take every fact you record from the transcript: anything the user promised, any price, date or next step, any objection, and whether the lead said yes, no or not yet. If the transcript and the summary disagree, go with the transcript and say so in the CRM note ("summary said X; transcript says Y"). If there's no transcript, say in the note that it came from the summary only.
 
 ## LinkedIn inbox (Kondo)
 

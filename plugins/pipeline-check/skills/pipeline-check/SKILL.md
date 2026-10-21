@@ -134,4 +134,4 @@ If you wrote drafts, finish with this exact line, and only if it's true: "Drafts
 
 If there's nothing in Today, nothing needs a decision and no clean-up, the whole report is one line saying the pipeline is up to date.
 
-Always end the report with this exact line, on its own, so the user can see which playbook ran: "Pipeline Check playbook 0.2.0"
+Always end the report with this exact line, on its own, so the user can see which playbook ran: "Pipeline Check playbook 0.2.1"
