@@ -35,15 +35,16 @@ Fill from what you can see, then confirm: name, business in one line, time zone,
 1. Call `crm_list_pipelines`. Show each pipeline with its stages.
 2. Ask which pipelines are sales pipelines. Client delivery pipelines are left out entirely: the check never touches existing clients' delivery work.
 3. For each sales pipeline, mark which stages are won, lost or not qualified (propose from the names, they confirm).
-4. Propose a follow-up wait for each open stage, then let them adjust. Starting points: first contact 2 to 3 days; in conversation 3 to 5; call booked none (wait for the call); proposal sent 3 to 4; follow up or nurture 7 to 14.
-5. Ask which custom contact fields exist, or call `crm_get_contact` on one of their contacts and read the field names. The useful ones are LinkedIn URL, LinkedIn chat thread and a document folder link. If they don't have them, suggest adding "LinkedIn URL" and "LinkedIn chat thread" in Less Annoying CRM settings; the check works without them, but finds LinkedIn chats faster with them.
+4. **Check each sales pipeline has the stages the check relies on, before going further:** a not-qualified stage (for leads from discarded locations), and a stage for after a call has happened (usually "Follow Up"). The connector can't add stages, so if one is missing, tell them how: in Less Annoying CRM, Settings, then Pipelines, open the pipeline, add the stage, and mark not-qualified as a closed stage. Let them add it now and call `crm_list_pipelines` again. If they'd rather not add a post-call stage, note that calls on that pipeline will be flagged in the report instead of moved.
+5. Ask about follow-up timing in plain words, one pipeline at a time: "For each stage, how many days of silence before someone goes on your follow-up list?" Show a suggested number next to each stage so they only change the ones they disagree with. Starting points: first contact 2 to 3 days; in conversation 3 to 5; call booked none (wait for the call); proposal sent 3 to 4; follow up or nurture 7 to 14.
+6. Don't ask about custom fields. Call `crm_search_contacts` for any contact, then `crm_get_contact` on it, and read the field names yourself. The useful ones are LinkedIn URL, LinkedIn chat thread and a document folder link. If LinkedIn URL or LinkedIn chat thread is missing, say in one line that adding them (Settings, then Custom Fields) helps the check find LinkedIn chats, and that it works without them. If the CRM has no contacts yet, note which fields to add and move on.
 
 ## 4. Stage moves the check may make on its own
 
 Propose these four, mapped to their stage names, and ask which to keep:
 
 - A new booking or calendar invite for a discovery call: move to their call-booked stage.
-- A call that has happened while the item is at call booked: move to their next stage (usually follow up).
+- A call that has happened while the item is at call booked: move to their post-call stage (usually follow up). Only for pipelines that have one; for the rest, write that a call that has happened is flagged, not moved.
 - They sent a proposal: move to their proposal stage.
 - A lead from a discarded location: move to not qualified with a note.
 
@@ -53,9 +54,9 @@ Anything not listed is flagged in the report, never moved. Wins and losses are n
 
 For each connected lead source, read what's there and ask which pipeline and stage a new person goes into:
 
-- **Quiz tool:** list their quizzes and ask which are theirs and live. Ignore the rest.
+- **Quiz tool:** list their quizzes. Accounts often hold quizzes built for other people, so pre-sort them yourself into "looks like theirs and live" and "looks like someone else's or unused" (by name, brand and recent results). Show the first group for them to confirm, and ask only about the ones you can't place.
 - **Booking tool:** list their event types. Ask which are sales calls and which pipeline each goes to. Take the booking link (the public scheduling URL, never an API address) from the main discovery-call event type.
-- **Email marketing:** list their forms. Ask which forms are lead forms.
+- **Email marketing:** list their forms. Long lists are normal, so pre-sort them into "looks like a lead form" (enquiry, call, audit, offer or request forms, especially paid ones), "looks like a lead magnet or newsletter" (free downloads, newsletter, workshop sign-ups) and "can't tell". Show the first group and the "can't tell" group; take the lead-magnet group as not creating leads unless they say otherwise. For each lead form, ask which pipeline and stage a new person goes into: someone who paid (a paid audit or offer) is warmer than a free download and usually starts at a later stage.
 - **Email:** ask what an enquiry looks like for them (replies to their offers, website contact form, referrals).
 - **LinkedIn inbox:** positive replies to their outreach.
 - Ask who to ignore: people pitching their own services, existing clients, suppliers, anyone else.
