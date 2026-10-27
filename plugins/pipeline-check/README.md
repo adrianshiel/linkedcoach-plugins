@@ -19,7 +19,7 @@ A daily check of your sales pipeline, run by Claude on a schedule. Each run:
 
 ## Set it up
 
-1. Install this plugin from the LinkedCoach marketplace (see the main README). In Claude Code the same step is:
+1. Add the LinkedCoach marketplace, then install this plugin from **Browse plugins** (see the main README). Adding the marketplace on its own doesn't install the plugin. In Claude Code the same step is:
 
    ```
    /plugin install pipeline-check --marketplace adrianshiel/linkedcoach-plugins

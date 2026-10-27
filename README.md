@@ -11,8 +11,9 @@ Plugins that LinkedCoach installs for its done-for-you lead generation clients.
 You need a paid Claude plan (Pro or above).
 
 1. In Claude, open **Customize**, then **Plugins**.
-2. Choose **Add**, then **Add marketplace**, and enter `adrianshiel/linkedcoach-plugins`.
-3. Turn on **Sync automatically**, so you get updates without doing anything.
-4. Install the plugin LinkedCoach set up for you.
+2. Choose **Add**, then **Add marketplace**, and enter `adrianshiel/linkedcoach-plugins`. Leave **Sync automatically** on, so you get updates without doing anything, and choose **Sync**.
+3. Adding the marketplace doesn't install anything, so nothing new appears in your list of plugins yet. Open **Browse plugins**, find the plugin LinkedCoach set up for you, and choose **Install**.
+
+If Claude says "This marketplace is already added", the marketplace is already there. Don't add it again: go straight to **Browse plugins** and install from there.
 
 Questions: [linked.coach](https://linked.coach)
