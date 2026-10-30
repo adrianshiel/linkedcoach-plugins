@@ -1,7 +1,7 @@
 {
   "name": "my-voice",
   "displayName": "My Voice",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Writes in your own voice, logs every correction you make, and reviews the log with you each week so your voice rules keep improving. Your rules and log live in your Google Drive.",
   "author": { "name": "LinkedCoach", "url": "https://linked.coach" }
 }

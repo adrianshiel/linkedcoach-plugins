@@ -1,30 +1,38 @@
-# Working with the My Voice files
+# Working with the voice files
 
-All three files are in the user's Google Drive, in the folder **My Voice**. This needs the Google Drive and Google Sheets connectors.
+## Names
 
-## Finding them
+Every file carries the person's full name, so voices shared between people never get mixed up. For Jane Smith:
 
-The user's own files, all with `owner = 'me'` so a voice someone has shared with them is never mistaken for theirs:
+- Folder: **Jane Smith Voice**
+- Rules doc: **Jane Smith Voice Rules** (Google Doc)
+- Log: **Jane Smith Voice Corrections Log** (Google Sheet)
+- Inside the folder: **Old versions**, holding replaced copies named "Jane Smith Voice Rules (replaced YYYY-MM-DD)"
 
-1. **Folder:** `search_files` with `title = 'My Voice' and mimeType = 'application/vnd.google-apps.folder' and owner = 'me'`. If there's more than one, use the one that contains "My Voice Rules".
-2. **Rules doc:** `search_files` with `title = 'My Voice Rules' and parentId = '<folder id>'`.
-3. **Log:** `search_files` with `title = 'My Voice Corrections Log' and parentId = '<folder id>'`.
-4. **Old versions:** `search_files` with `title = 'Old versions' and parentId = '<folder id>'`.
+In these instructions, [Name] means the person's full name exactly as it appears in their folder name. This needs the Google Drive and Google Sheets connectors.
 
-Match the titles exactly. Replaced copies are named "My Voice Rules (replaced YYYY-MM-DD)", so they never match the live one. If two files have the exact live title, use the most recently modified one and tell the user in one line that there's a duplicate.
+## Finding the user's own files
+
+1. **Rules doc:** `search_files` with `title contains 'Voice Rules' and owner = 'me'`. Keep only a result titled exactly "[Name] Voice Rules", with no brackets after it. Its `parentId` is the user's Voice folder. If there's more than one, use the one whose folder is named "[Name] Voice" and tell the user in one line that there's a duplicate.
+2. **Log:** `search_files` with `title = '[Name] Voice Corrections Log' and parentId = '<folder id>'`.
+3. **Old versions:** `search_files` with `title = 'Old versions' and parentId = '<folder id>'`.
+
+Always include `owner = 'me'` in step 1, so a voice someone else has shared with the user is never mistaken for theirs.
 
 ## Someone else's voice
 
-When the user writes as someone who has shared their My Voice folder with them:
+When the user writes as someone who has shared their Voice folder with them:
 
-1. `search_files` with `title = 'My Voice Rules'`. Keep only results whose title is exactly "My Voice Rules", then pick the one whose `owner` is that person. Don't use `owner != 'me'` in the query: Drive ignores the title match when you do and returns unrelated files.
-2. If none of the results belongs to that person, they haven't shared their folder with the user. Say so in one line and fall back to the "without a shared Rules doc" case in the skill.
-3. Their log: `search_files` with `title = 'My Voice Corrections Log'`, again picking the exact title with their `owner`.
+1. `search_files` with `title contains 'Voice Rules' and title contains '<a name the user used for them>'`. Keep only a result titled exactly "[Their name] Voice Rules", with no brackets after it. If two people match (two Sarahs, say), ask the user which one.
+2. If nothing matches, that person hasn't shared their folder with the user. Say so in one line and fall back to the "without a shared Rules doc" case in the skill.
+3. Their log: `search_files` with `title = '[Their name] Voice Corrections Log'`.
 4. Read their Rules doc exactly as you would the user's own (see Reading).
+
+Don't use `owner != 'me'` in any query: Drive then ignores the title match and returns unrelated files.
 
 ## Reading
 
-- **Rules doc:** `read_file_content`. Headings come back wrapped in `**` bold markers. Ignore the markers.
+- **Rules doc:** `read_file_content` with `includeComments: true`. Without it, Drive's reader garbles emoji and cuts the end off long documents. Headings come back wrapped in `**` bold markers. Ignore the markers.
   - This reader cuts a document off at about 32,000 characters. That's why the Rules doc has a 27,000-character limit and always ends with the "Default rules switched off" heading. If that heading is missing from what you read, the read was cut short. Never rebuild the doc from a cut-short read.
   - This reader also garbles emoji (they come back as stray symbols such as "ð"), so the Rules doc never contains emoji characters. Describe them in words instead, for example "Let me know down there, then the pointing-down emoji".
 - **Log:** Google Sheets `get_values` with range `A1:L3000`. Row 1 is the header row. Spreadsheet row number = position in the returned list + 1.
@@ -48,10 +56,10 @@ Only the voice-review and voice-setup skills write the Rules doc.
 
 **Replacing:** Drive can't overwrite a doc's text, so a new version replaces the old one. Work in this order, which never leaves the user without a working doc:
 
-1. Create the new version with the title "My Voice Rules (new)" in the My Voice folder.
+1. Create the new version with the title "[Name] Voice Rules (new)" in the Voice folder.
 2. Read it back. Check that every `##` heading from the old version is still there, except headings the user approved removing. Check that the length is in line with the changes: for added rules, about the same or longer. If either check fails, trash the new doc, tell the user nothing changed, and stop.
-3. Rename the old doc to "My Voice Rules (replaced YYYY-MM-DD)" and move it into Old versions with `update_file` (`title`, `parentId`). If Old versions doesn't exist, create it first (`create_file`, mimeType `application/vnd.google-apps.folder`).
-4. Rename the new doc to "My Voice Rules".
+3. Rename the old doc to "[Name] Voice Rules (replaced YYYY-MM-DD)" and move it into Old versions with `update_file` (`title`, `parentId`). If Old versions doesn't exist, create it first (`create_file`, mimeType `application/vnd.google-apps.folder`).
+4. Rename the new doc to "[Name] Voice Rules".
 
 ## Creating the log
 

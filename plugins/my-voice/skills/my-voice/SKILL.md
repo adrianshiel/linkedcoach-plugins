@@ -1,6 +1,6 @@
 ---
 name: my-voice
-description: Writes in the user's own voice from their My Voice Rules document, picks the right register, and logs every correction they make so the rules improve each week. Use before writing, drafting, editing, rewriting, reviewing or judging any text for the user or in their name, including emails, LinkedIn posts, articles and messages, newsletters and marketing emails, website and sales copy, proposals, reports and client documents, scripts, and replies in conversation. Also use whenever the user edits something written for them, rewrites a line, corrects a word or tone, states a writing rule, or says something doesn't sound like them, because those corrections must be logged.
+description: Writes in the user's own voice from their Voice Rules document, picks the right register, and logs every correction they make so the rules improve each week. Use before writing, drafting, editing, rewriting, reviewing or judging any text for the user or in their name, including emails, LinkedIn posts, articles and messages, newsletters and marketing emails, website and sales copy, proposals, reports and client documents, scripts, and replies in conversation. Also use whenever the user edits something written for them, rewrites a line, corrects a word or tone, states a writing rule, or says something doesn't sound like them, because those corrections must be logged.
 ---
 
 # My Voice
@@ -11,10 +11,10 @@ Apply the rules silently. Never quote them back to the user or explain them.
 
 ## Where everything lives
 
-Everything is in the user's Google Drive, in a folder called **My Voice**:
+Everything is in the user's Google Drive, in a folder named after them, such as **Jane Smith Voice**:
 
-- **My Voice Rules** (Google Doc). The user's own rules, register by register. The only source of their voice.
-- **My Voice Corrections Log** (Google Sheet). One row per correction.
+- **[Name] Voice Rules** (Google Doc). The user's own rules, register by register. The only source of their voice.
+- **[Name] Voice Corrections Log** (Google Sheet). One row per correction.
 - **Old versions** (folder). Earlier copies of the rules, kept by the weekly review.
 
 The **default rules** are in `references/default-rules.md` in this skill. They apply to everything unless the Rules doc's "Default rules switched off" section names one.
@@ -31,7 +31,7 @@ If the Rules doc contradicts itself, follow the more specific rule and tell the 
 
 ## Step 1. Load the rules
 
-Find and read the user's own My Voice Rules once per conversation, before writing anything. Read it again if the weekly review changed it during this conversation. Check that the last heading, "Default rules switched off", arrived. If it didn't, the read was cut short: use what you have, and tell the user in one line that their rules doc is too long and the next review should condense it.
+Find and read the user's own Voice Rules doc once per conversation, before writing anything. Read it again if the weekly review changed it during this conversation. Check that the last heading, "Default rules switched off", arrived. If it didn't, the read was cut short: use what you have, and tell the user in one line that their rules doc is too long and the next review should condense it.
 
 - **No Rules doc found:** say once, "Your voice setup hasn't been run yet, so I'm writing with the default rules only. Say 'set up my voice' when you want to set it up." Then carry on with the default rules.
 - **Drive can't be reached:** say so in one line, write with the default rules, and handle any correction as in "If the log can't be written" below.
@@ -41,7 +41,7 @@ Find and read the user's own My Voice Rules once per conversation, before writin
 Settle this before writing a word.
 
 - **The user's own writing** (their name on it, written for them to send, or Claude talking to them): use their rules.
-- **Writing as someone who has shared their My Voice Rules with the user** (for example, a team member replying to messages for their boss): find that person's Rules doc (see "Someone else's voice" in drive.md) and use it exactly as the user's own: all its rules and registers, and every default rule it doesn't switch off. It replaces the user's rules completely for that piece.
+- **Writing as someone who has shared their Voice folder with the user** (for example, a team member replying to messages for their boss): find that person's Rules doc (see "Someone else's voice" in drive.md) and use it exactly as the user's own: all its rules and registers, and every default rule it doesn't switch off. It replaces the user's rules completely for that piece.
 - **Writing in someone else's name without a shared Rules doc** (a colleague, a client), especially with that person's voice profile or style guide in play: that person's voice wins completely. Switch the user's rules off. Don't blend them, and don't use them to fill gaps in the other person's profile. Where their profile is silent, write plainly and neutrally. Only the default rules marked **tell** still apply, because AI tells hurt anyone's copy. If the other person's profile uses one of those, avoid it and say so in one line. The default rules marked **style** don't apply unless the other person's profile agrees with them.
 - **Unclear:** ask one short question. Never guess, and never default to the user.
 
@@ -90,4 +90,4 @@ The columns, in this order:
 
 **When the user states a rule,** log it as STATED, then ask in one line whether they want it added to their rules now. If they say yes, run the voice-review skill for that one rule. Otherwise it goes in at the next weekly review.
 
-**Never edit My Voice Rules from this skill.** Rules only change through the voice-review skill, where the user approves each change.
+**Never edit a Voice Rules doc from this skill.** Rules only change through the voice-review skill, where the user approves each change.

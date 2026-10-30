@@ -21,14 +21,14 @@ Install the plugin, start a new chat and say "set up my voice".
 
 A team member who writes for you (replying to your LinkedIn messages, say) uses your rules directly, so there's no copy to keep in sync.
 
-1. Share your My Voice folder with them as a viewer. To have their edits to your drafts logged for your weekly review, also share My Voice Corrections Log with them as an editor.
+1. Share your Voice folder with them as a viewer. To have their edits to your drafts logged for your weekly review, also share your Voice Corrections Log with them as an editor. Setup offers to do this for you.
 2. They install this plugin and connect Google Drive and Google Sheets. They don't need to run setup.
-3. They ask Claude to write as you, for example "reply to this message as Adrian". Claude reads your current rules every time, so any change you approve reaches them straight away.
+3. They ask Claude to write as you, for example "reply to this message as Jane". They can hold several people's voices at once, because every file carries its owner's name. Claude reads your current rules every time, so any change you approve reaches them straight away.
 
 ## Your files
 
-Your files live in your Google Drive, in a folder called My Voice:
+Your files live in your Google Drive, in a folder named after you (for Jane Smith, "Jane Smith Voice"):
 
-- **My Voice Rules:** your rules, which you can edit by hand at any time.
-- **My Voice Corrections Log:** one row per correction.
+- **Jane Smith Voice Rules:** your rules, which you can edit by hand at any time.
+- **Jane Smith Voice Corrections Log:** one row per correction.
 - **Old versions:** a copy of your rules from before each change.

@@ -1,4 +1,4 @@
-# My Voice Rules template
+# Voice Rules template
 
 This is the shape of every user's Rules doc. voice-setup builds the first version from it, and voice-review keeps to it. Use only headings, bullets, plain paragraphs and bold (see drive.md).
 
@@ -10,7 +10,7 @@ Stay under 27,000 characters, and use no emoji characters: describe them in word
 
 ---
 
-# My Voice Rules
+# [Name] Voice Rules
 
 Last updated: YYYY-MM-DD
 
@@ -18,7 +18,7 @@ Last updated: YYYY-MM-DD
 
 ## How this works
 
-Claude reads this document before writing anything for you. When you correct something Claude wrote, it's logged in My Voice Corrections Log, and each week Claude reviews the log with you and proposes changes here. Nothing changes without your yes. You can also edit this document yourself at any time.
+Claude reads this document before writing anything for you. When you correct something Claude wrote, it's logged in your Voice Corrections Log, and each week Claude reviews the log with you and proposes changes here. Nothing changes without your yes. You can also edit this document yourself at any time.
 
 ## Registers
 

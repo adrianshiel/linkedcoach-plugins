@@ -1,6 +1,6 @@
 ---
 name: voice-review
-description: Weekly review of the user's voice corrections log. Finds patterns seen at least twice, proposes changes to their My Voice Rules document with full before-and-after examples, and applies only the changes the user approves. Use when a scheduled task or the user says weekly voice review, review my voice, voice review or update my voice rules, or asks for a rule they've just stated to go into their rules now.
+description: Weekly review of the user's voice corrections log. Finds patterns seen at least twice, proposes changes to their Voice Rules document with full before-and-after examples, and applies only the changes the user approves. Use when a scheduled task or the user says weekly voice review, review my voice, voice review or update my voice rules, or asks for a rule they've just stated to go into their rules now.
 ---
 
 # Voice review
@@ -11,7 +11,7 @@ Before you start, read `skills/my-voice/references/drive.md` and `skills/my-voic
 
 ## 1. Read everything
 
-1. Find the My Voice folder, the Rules doc and the log, as described in drive.md. If any of them is missing, say which in one line, tell the user to say "set up my voice", and stop.
+1. Find the user's Voice folder, the Rules doc and the log, as described in drive.md. If any of them is missing, say which in one line, tell the user to say "set up my voice", and stop.
 2. Read the Rules doc in full and every row of the log.
 
 ## 2. Work out the proposals
@@ -53,7 +53,7 @@ Ask the user to approve, change or reject each one. Use AskUserQuestion if it's 
 
 **In a scheduled run,** present the proposals and wait for the user's answers in this chat. Change nothing until they answer. If they never answer, nothing changes, and next week's review proposes the same things again.
 
-**At the end of the report,** add the line "My Voice review 0.2.0". It shows the review ran from the plugin.
+**At the end of the report,** add the line "My Voice review 0.3.0". It shows the review ran from the plugin.
 
 ## 4. Apply what's approved
 
