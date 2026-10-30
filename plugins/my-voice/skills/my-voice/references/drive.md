@@ -11,11 +11,13 @@ Every file carries the person's full name, so voices shared between people never
 
 In these instructions, [Name] means the person's full name exactly as it appears in their folder name. This needs the Google Drive and Google Sheets connectors.
 
+Drive's search is loose: even a `title =` query returns near matches, such as an old "Voice_Profile" file. Always filter by file type in the query, and check the exact title of every result yourself before using it.
+
 ## Finding the user's own files
 
-1. **Rules doc:** `search_files` with `title contains 'Voice Rules' and owner = 'me'`. Keep only a result titled exactly "[Name] Voice Rules", with no brackets after it. Its `parentId` is the user's Voice folder. If there's more than one, use the one whose folder is named "[Name] Voice" and tell the user in one line that there's a duplicate.
-2. **Log:** `search_files` with `title = '[Name] Voice Corrections Log' and parentId = '<folder id>'`.
-3. **Old versions:** `search_files` with `title = 'Old versions' and parentId = '<folder id>'`.
+1. **Rules doc:** `search_files` with `title contains 'Voice Rules' and mimeType = 'application/vnd.google-apps.document' and owner = 'me'`. Keep only a result titled exactly "[Name] Voice Rules", with no brackets after it. Its `parentId` is the user's Voice folder. If there's more than one, use the one whose folder is named "[Name] Voice" and tell the user in one line that there's a duplicate.
+2. **Log:** `search_files` with `parentId = '<folder id>' and mimeType = 'application/vnd.google-apps.spreadsheet'`, then take the result titled exactly "[Name] Voice Corrections Log".
+3. **Old versions:** `search_files` with `parentId = '<folder id>' and mimeType = 'application/vnd.google-apps.folder'`, then take the result titled exactly "Old versions".
 
 Always include `owner = 'me'` in step 1, so a voice someone else has shared with the user is never mistaken for theirs.
 
@@ -23,9 +25,9 @@ Always include `owner = 'me'` in step 1, so a voice someone else has shared with
 
 When the user writes as someone who has shared their Voice folder with them:
 
-1. `search_files` with `title contains 'Voice Rules' and title contains '<a name the user used for them>'`. Keep only a result titled exactly "[Their name] Voice Rules", with no brackets after it. If two people match (two Sarahs, say), ask the user which one.
+1. `search_files` with `title contains 'Voice Rules' and mimeType = 'application/vnd.google-apps.document'`. Follow the next-page token until none comes back. Keep only results titled exactly "[Someone's name] Voice Rules", with no brackets after it, and pick the one whose name matches the person the user means. If two match (two Sarahs, say), ask the user which one.
 2. If nothing matches, that person hasn't shared their folder with the user. Say so in one line and fall back to the "without a shared Rules doc" case in the skill.
-3. Their log: `search_files` with `title = '[Their name] Voice Corrections Log'`.
+3. Their log: `search_files` with `parentId = '<their Rules doc's parentId>' and mimeType = 'application/vnd.google-apps.spreadsheet'`, then take the result titled exactly "[Their name] Voice Corrections Log". If the user can't see it, they can't log to it.
 4. Read their Rules doc exactly as you would the user's own (see Reading).
 
 Don't use `owner != 'me'` in any query: Drive then ignores the title match and returns unrelated files.
