@@ -8,7 +8,7 @@ description: Sets up the My Voice system for a new user. Finds their existing vo
 You're setting up the My Voice system for this user. At the end they'll have:
 
 - a Voice folder in their Google Drive, named after them, holding their Rules doc, their corrections log and an Old versions folder
-- one line in their Claude settings
+- a short block in their Claude settings
 - a weekly scheduled review
 
 Aim for 20 minutes.
@@ -77,17 +77,20 @@ Read the Rules doc and the log back to check they're complete. Give them the fol
 
 If anyone else writes in their name (question 7), share with each of them using `share_file`: the Voice folder as `reader`, and the log as `writer`. With that access, the other person's Claude writes from these rules whenever it writes as the user, and their edits go into the log for the user's weekly review. Tell the user they can remove anyone's access in Drive at any time.
 
-## 7. One line in their Claude settings
+## 7. A short block in their Claude settings
 
-Explain in one sentence: the voice skill loads when Claude sees a writing task, and this line makes sure corrections made in ordinary conversation get caught too.
+Explain in one sentence: the voice skill loads when Claude sees a writing task, and this block makes sure corrections made in ordinary conversation get caught too.
 
-Ask them to paste this into their Claude settings, in the personal preferences box, below anything already there:
+Ask them to paste this into their Claude settings, in the personal preferences box, below anything already there. Fill in their full name first:
 
 ```
-My voice: before writing or editing anything for me, use the my-voice skill. Whenever I edit, rewrite or object to something you wrote for me, including in conversation, use my-voice to log the correction. Don't wait to be asked.
+# Voice and corrections
+- Before writing anything, work out whose voice it is. If I'm writing for someone else, their voice wins and mine is switched off. If you can't tell, ask.
+- For my own writing, use the my-voice skill. My rules are in "[Name] Voice Rules" in my Google Drive.
+- Whenever I edit, rewrite or object to something you wrote for me, including in conversation, use my-voice to log the correction. Don't wait to be asked. Confirm in one line.
 ```
 
-If they already have preferences there that describe their writing style, suggest moving those rules into the Rules doc, so there's one place to keep up to date.
+If their personal preferences already describe their writing style or point at an old voice profile file, suggest moving those rules into the Rules doc and deleting the pointer, so there's one place to keep up to date.
 
 ## 8. Test the loop
 

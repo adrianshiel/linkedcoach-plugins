@@ -53,7 +53,7 @@ Ask the user to approve, change or reject each one. Use AskUserQuestion if it's 
 
 **In a scheduled run,** present the proposals and wait for the user's answers in this chat. Change nothing until they answer. If they never answer, nothing changes, and next week's review proposes the same things again.
 
-**At the end of the report,** add the line "My Voice review 0.3.1". It shows the review ran from the plugin.
+**At the end of the report,** add the line "My Voice review 0.3.2". It shows the review ran from the plugin.
 
 ## 4. Apply what's approved
 
