@@ -1,10 +1,11 @@
 # LinkedCoach plugins for Claude
 
-Plugins that LinkedCoach installs for its done-for-you lead generation clients.
+Plugins that LinkedCoach installs for its clients and team.
 
 | Plugin | What it does |
 | --- | --- |
 | [Pipeline Check](plugins/pipeline-check) | A daily check of your sales pipeline. It keeps your CRM up to date from email, LinkedIn, calls and your marketing tools, tells you who to follow up with today, and drafts the replies in your voice. It never sends anything. |
+| [My Voice](plugins/my-voice) | Claude writes in your voice, logs every correction you make, and reviews the log with you each week so your rules keep improving. Nothing in your rules changes without your yes. |
 
 ## Add this marketplace to Claude
 

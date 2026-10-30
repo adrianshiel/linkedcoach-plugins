@@ -10,6 +10,11 @@
       "name": "pipeline-check",
       "source": "./plugins/pipeline-check",
       "description": "A daily check of your sales pipeline: keeps your CRM up to date from every channel, tells you who to follow up with today, and drafts the replies in your voice. Never sends anything."
+    },
+    {
+      "name": "my-voice",
+      "source": "./plugins/my-voice",
+      "description": "Writes in your own voice, logs every correction you make, and reviews the log with you each week so your voice rules keep improving. Your rules and log live in your Google Drive."
     }
   ]
 }
